@@ -1,29 +1,73 @@
 ﻿// word count.cpp : 此文件包含 "main" 函数。程序执行将在此处开始并结束。
 //
 
-#include <iostream>
-#include<stdio.h>
+#include<stdio.h>  
+#include<string.h>  
+int n, count;
+char arr[100];
+char temp[100][100];
+void word()
+{
+    char* p = arr;
+    int j = 0;
+    while (*p)
+    {
+        if (*p == ' ' && *(p + 1) != ' ')
+        {
+            temp[n][j] = '\0';
+            j = 0;
+            n++;
+        }
+        if (*p != ' ')
+        {
+            temp[n][j++] = *p;
+        }
+        p++;
+    }
+}
+void different()
+{
+    int i, j;
+    for (i = 0; i <= n; i++)
+    {
+        for (j = i + 1; j <= n; j++)
+        {
+            if (strcmp(temp[i], temp[j]) == 0)
+            {
+                strcpy_s(temp[j], "");
+            }
+        }
+        if (strcmp(temp[i], "") != 0)
+            count++;
+    }
+    printf("%d\n", count);
+}
+void countword()
+{
+    int i, w;
+    i = w = 0;
+    for (i = 0; i < 100; i++)
+    {
+        if (arr[i] >= 'a' && arr[i] <= 'z')
+        {
+            w++;
+        }
 
+    }
+    printf("%d", w);
+}
 int main()
 {
-    int c, nw, nl, nc, state;
-    nl = nc = nw = 0;
-    state = OUT;
-    while ((c = getchar()) != EOF')    
+    while (gets_s(arr))
     {
-        ++nc;
-        if ('\n' == c)
-            ++nl;
-        if (' ' == c || '\t' == c || '\n' == c)
-        {
-            state = OUT;
-        }
-        else if (OUT == state)
-        {
-            state = IN;
-            ++nw;
-        }
+        n = 0;
+        count = 0;
+        word();
+        different();
+        countword();
     }
+
+    return 0;
 }
 
 // 运行程序: Ctrl + F5 或调试 >“开始执行(不调试)”菜单
