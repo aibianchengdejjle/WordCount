@@ -6,8 +6,24 @@
 
 int main()
 {
-    std::cout << "Hello World!\n";
-    printf("www");
+    int c, nw, nl, nc, state;
+    nl = nc = nw = 0;
+    state = OUT;
+    while ((c = getchar()) != EOF')    
+    {
+        ++nc;
+        if ('\n' == c)
+            ++nl;
+        if (' ' == c || '\t' == c || '\n' == c)
+        {
+            state = OUT;
+        }
+        else if (OUT == state)
+        {
+            state = IN;
+            ++nw;
+        }
+    }
 }
 
 // 运行程序: Ctrl + F5 或调试 >“开始执行(不调试)”菜单
